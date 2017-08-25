@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * Created by Admin on 2017/8/25.
  */
 public class UserService {
-    UserDao dao = new UserDao();
+    private UserDao dao = new UserDao();
 
     public boolean userExist(String uid, String pwd) throws UserException {
         User user = null;

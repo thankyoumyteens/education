@@ -12,6 +12,7 @@
           <element id="library" level="project" name="dbutils" />
           <element id="library" level="project" name="beanutils" />
           <element id="library" level="module" name="JUnit4" module-name="education" />
+          <element id="library" level="project" name="JSONLibraries" />
         </element>
       </element>
     </root>
