@@ -1,18 +1,46 @@
 create database Education default character set utf8;
 use Education;
 
+-- 登陆
 create table t_user(
 	id int auto_increment primary key not null,
-	uid text not null,
-	pwd text
+	delFlag int, -- 删除标记
+	accessLevel int, -- 会员等级 0:普通会员 1:正式会员
+	uid text not null, -- 手机号
+	pwd text -- 密码
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
+-- 用户信息
+create table t_profile(
+	id int auto_increment primary key not null,
+	uid text, -- 用户名
+	nickname text, -- 昵称
+	name text, -- 姓名
+	gender text, -- 性别
+	address text, -- 住址
+	mail text, -- 邮箱
+	idCard text, -- 身份证号
+	schoolCard text, -- 学号
+	qqAccount text, -- QQ号
+	wechatAccount text, -- 微信
+	weiboAccount text -- 微博
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+-- 模拟题
+create table t_simulation(
+  id int auto_increment primary key not null,
+  title text,
+  link text
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+-- 历年真题
 create table t_exams(
   id int auto_increment primary key not null,
   title text,
   link text
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
+-- 课程录像
 create table t_course(
   id int auto_increment primary key not null,
   category int,
@@ -21,8 +49,13 @@ create table t_course(
   link text
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-insert into t_user(uid, pwd) values('test', 'test');
 
+
+insert into t_user(delFlag, accessLevel, uid, pwd) values(0, 0, 'test1', 'test');
+insert into t_user(delFlag, accessLevel, uid, pwd) values(0, 1, 'test2', 'test');
+insert into t_profile(uid, nickname, name, gender) values('test2', '测试', '姓名', '男');
+
+insert into t_simulation(title, link) values('2017年高级级经济师农业经济真题文字版', '/course/exams/1.rar');
 insert into t_exams(title, link) values('2017年高级级经济师农业经济真题文字版', '/course/exams/1.rar');
 
 

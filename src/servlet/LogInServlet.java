@@ -1,6 +1,9 @@
 package servlet;
 
 import exception.UserException;
+import model.Profile;
+import net.sf.json.JSONObject;
+import service.ProfileService;
 import service.UserService;
 
 import javax.servlet.ServletException;
@@ -23,15 +26,27 @@ public class LogInServlet extends HttpServlet {
         String userId = request.getParameter("userId");
         String password = request.getParameter("password");
         UserService service = new UserService();
+        ProfileService profileService = new ProfileService();
+        String status = "";
+        String message = "";
+        Profile profile = null;
         try {
             if (service.userExist(userId, password)) {
-                response.getWriter().write("OK");
+                status = "OK"; // 登陆成功
+                message = "登陆成功";
+                profile = profileService.getProfileByUid(userId);
             } else {
-                response.getWriter().write("用户名或密码错误");
+                status = "NO";
+                message = "用户名或密码错误";
             }
         } catch (UserException e) {
-            response.getWriter().write(e.getMessage());
+            message = e.getMessage();
+        } finally {
+            JSONObject object = new JSONObject();
+            object.put("status", status);
+            object.put("message", message);
+            object.put("data", profile);
+            response.getWriter().write(object.toString());
         }
-
     }
 }
