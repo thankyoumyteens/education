@@ -43,7 +43,7 @@ create table t_exams(
 -- 课程录像
 create table t_course(
   id int auto_increment primary key not null,
-  category int,
+  category int, -- -1:全部 100:免费课程
   title text,
   img text,
   link text
@@ -54,10 +54,11 @@ create table t_course(
 insert into t_user(delFlag, accessLevel, uid, pwd) values(0, 0, '12345678901', '123');
 insert into t_user(delFlag, accessLevel, uid, pwd) values(0, 1, '22345678901', '123');
 
-insert into t_simulation(title, link) values('2017年高级级经济师农业经济真题文字版', '/course/exams/1.rar');
+insert into t_simulation(title, link) values('中级级经济师考试模拟题', '/course/exams/1.rar');
 insert into t_exams(title, link) values('2017年高级级经济师农业经济真题文字版', '/course/exams/1.rar');
 
 
+insert into t_course(category, title, img, link) values(100, '初级经济基础', 'http://img.mukewang.com/529dc3380001379906000338-240-135.jpg', 'static.hdslb.com/miniloader.swf?aid=13556227&page=1');
 insert into t_course(category, title, img, link) values(0, '初级经济基础', 'http://img.mukewang.com/529dc3380001379906000338-240-135.jpg', 'static.hdslb.com/miniloader.swf?aid=13556227&page=1');
 insert into t_course(category, title, img, link) values(1, '中级经济基础', 'http://img.mukewang.com/529dc3380001379906000338-240-135.jpg', 'static.hdslb.com/miniloader.swf?aid=13556227&page=1');
 insert into t_course(category, title, img, link) values(2, '高级经济基础', 'http://img.mukewang.com/529dc3380001379906000338-240-135.jpg', 'static.hdslb.com/miniloader.swf?aid=13556227&page=1');
