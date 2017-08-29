@@ -17,4 +17,10 @@ public class UserDao {
         User user =  qr.query(sql, new BeanHandler<>(User.class), uid, pwd);
         return user;
     }
+
+    public int insert(User user) throws SQLException {
+        String queryString = "insert into t_user(uid, pwd, accessLevel, delFlag) values(?,?,?,?)";
+        QueryRunner queryRunner = new QueryRunner(C3P0Util.getDataSource());
+        return queryRunner.update(queryString, user.getUid(), user.getPwd(), user.getAccessLevel(), user.getDelFlag());
+    }
 }
