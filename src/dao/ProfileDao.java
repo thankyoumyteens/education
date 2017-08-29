@@ -17,4 +17,9 @@ public class ProfileDao {
         Profile profile =  qr.query(sql, new BeanHandler<>(Profile.class), uid);
         return profile;
     }
+
+    public int update(String queryString, Object[] params) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(C3P0Util.getDataSource());
+        return queryRunner.update(queryString, params);
+    }
 }

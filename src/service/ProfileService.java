@@ -22,4 +22,28 @@ public class ProfileService {
         }
         return profile;
     }
+
+    public boolean updateProfile(Object... params) throws UserException {
+        String queryString = null;
+        try {
+            if (params.length == 2) {
+                queryString = "update t_profile set mail=? where uid=?";
+            } else if (params.length == 4) {
+                queryString = "update t_profile set qqAccount=?,wechatAccount=?,weiboAccount=? where uid=?";
+            } else {
+                queryString = "update t_profile set " +
+                        "nickname=?," +
+                        "name=?," +
+                        "gender=?," +
+                        "idCard=?," +
+                        "schoolCard=?," +
+                        "address=?" +
+                        " where uid=?";
+            }
+            return dao.update(queryString, params) > 0;
+        } catch (SQLException e) {
+            //
+            throw new UserException("服务器异常");
+        }
+    }
 }
