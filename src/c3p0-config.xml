@@ -2,7 +2,7 @@
 <c3p0-config>
   <default-config>
 	<property name="driverClass">com.mysql.jdbc.Driver</property>
-	<property name="jdbcUrl">jdbc:mysql://localhost:3306/Education</property>
+	<property name="jdbcUrl">jdbc:mysql://localhost:3306/Education?useUnicode=true&amp;characterEncoding=UTF-8</property>
 	<property name="user">root</property>
 	<property name="password">honglang</property>
     <property name="initialPoolSize">10</property>

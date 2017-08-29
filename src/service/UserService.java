@@ -26,4 +26,15 @@ public class UserService {
             return true;
         }
     }
+
+    public User getUser(String uid, String pwd) throws UserException {
+        User user = null;
+        try {
+            user = dao.getUserByUidAndPwd(uid, pwd);
+        } catch (SQLException e) {
+            // 记录
+            throw new UserException("服务器异常");
+        }
+        return user;
+    }
 }

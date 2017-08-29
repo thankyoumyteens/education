@@ -2,6 +2,7 @@ package servlet;
 
 import exception.UserException;
 import model.Profile;
+import model.User;
 import net.sf.json.JSONObject;
 import service.ProfileService;
 import service.UserService;
@@ -30,10 +31,12 @@ public class LogInServlet extends HttpServlet {
         String status = "";
         String message = "";
         Profile profile = null;
+        User user = null;
         try {
             if (service.userExist(userId, password)) {
                 status = "OK"; // 登陆成功
                 message = "登陆成功";
+                user = service.getUser(userId, password);
                 profile = profileService.getProfileByUid(userId);
             } else {
                 status = "NO";
@@ -45,7 +48,8 @@ public class LogInServlet extends HttpServlet {
             JSONObject object = new JSONObject();
             object.put("status", status);
             object.put("message", message);
-            object.put("data", profile);
+            object.put("profile", profile);
+            object.put("user", user);
             response.getWriter().write(object.toString());
         }
     }

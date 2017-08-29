@@ -51,9 +51,8 @@ create table t_course(
 
 
 
-insert into t_user(delFlag, accessLevel, uid, pwd) values(0, 0, 'test1', 'test');
-insert into t_user(delFlag, accessLevel, uid, pwd) values(0, 1, 'test2', 'test');
-insert into t_profile(uid, nickname, name, gender) values('test2', '测试', '姓名', '男');
+insert into t_user(delFlag, accessLevel, uid, pwd) values(0, 0, '12345678901', '123');
+insert into t_user(delFlag, accessLevel, uid, pwd) values(0, 1, '22345678901', '123');
 
 insert into t_simulation(title, link) values('2017年高级级经济师农业经济真题文字版', '/course/exams/1.rar');
 insert into t_exams(title, link) values('2017年高级级经济师农业经济真题文字版', '/course/exams/1.rar');

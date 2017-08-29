@@ -23,9 +23,12 @@ public class ProfileService {
         return profile;
     }
 
-    public boolean updateProfile(Object... params) throws UserException {
+    public boolean updateProfile(String uid, Object... params) throws UserException {
         String queryString = null;
         try {
+            if (!dao.tableExist(uid)) {
+                dao.initProfile(uid);
+            }
             if (params.length == 2) {
                 queryString = "update t_profile set mail=? where uid=?";
             } else if (params.length == 4) {

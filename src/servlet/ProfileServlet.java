@@ -41,7 +41,7 @@ public class ProfileServlet extends HttpServlet {
             switch (tabIndex) {
                 case 1:
                     mail = request.getParameter("mail");
-                    service.updateProfile(mail, uid);
+                    service.updateProfile(uid, mail, uid);
                     break;
                 case 2:
                     nickname = request.getParameter("nickname");
@@ -50,13 +50,13 @@ public class ProfileServlet extends HttpServlet {
                     idCard = request.getParameter("idCard");
                     schoolCard = request.getParameter("schoolCard");
                     address = request.getParameter("address");
-                    service.updateProfile(nickname, name, gender, idCard, schoolCard, address, uid);
+                    service.updateProfile(uid, nickname, name, gender, idCard, schoolCard, address, uid);
                     break;
                 case 3:
                     qqAccount = request.getParameter("qqAccount");
                     wechatAccount = request.getParameter("wechatAccount");
                     weiboAccount = request.getParameter("weiboAccount");
-                    service.updateProfile(qqAccount, wechatAccount, weiboAccount, uid);
+                    service.updateProfile(uid, qqAccount, wechatAccount, weiboAccount, uid);
                     break;
             }
             status = "OK";
