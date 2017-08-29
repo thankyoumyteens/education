@@ -24,33 +24,42 @@ public class LogInServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userId = request.getParameter("userId");
-        String password = request.getParameter("password");
-        UserService service = new UserService();
-        ProfileService profileService = new ProfileService();
-        String status = "";
-        String message = "";
-        Profile profile = null;
-        User user = null;
-        try {
-            if (service.userExist(userId, password)) {
-                status = "OK"; // 登陆成功
-                message = "登陆成功";
-                user = service.getUser(userId, password);
-                profile = profileService.getProfileByUid(userId);
-            } else {
-                status = "NO";
-                message = "用户名或密码错误";
+//        String imageCode = request.getParameter("imageCode");
+//        String code = request.getSession().getAttribute("check_code_session").toString();
+//        if (!code.equals(imageCode)) {
+//            JSONObject object = new JSONObject();
+//            object.put("status", "NO");
+//            object.put("message", "验证码错误");
+//            response.getWriter().write(object.toString());
+//        } else {
+            String userId = request.getParameter("userId");
+            String password = request.getParameter("password");
+            UserService service = new UserService();
+            ProfileService profileService = new ProfileService();
+            String status = "";
+            String message = "";
+            Profile profile = null;
+            User user = null;
+            try {
+                if (service.userExist(userId, password)) {
+                    status = "OK"; // 登陆成功
+                    message = "登陆成功";
+                    user = service.getUser(userId, password);
+                    profile = profileService.getProfileByUid(userId);
+                } else {
+                    status = "NO";
+                    message = "用户名或密码错误";
+                }
+            } catch (UserException e) {
+                message = e.getMessage();
+            } finally {
+                JSONObject object = new JSONObject();
+                object.put("status", status);
+                object.put("message", message);
+                object.put("profile", profile);
+                object.put("user", user);
+                response.getWriter().write(object.toString());
             }
-        } catch (UserException e) {
-            message = e.getMessage();
-        } finally {
-            JSONObject object = new JSONObject();
-            object.put("status", status);
-            object.put("message", message);
-            object.put("profile", profile);
-            object.put("user", user);
-            response.getWriter().write(object.toString());
-        }
+//        }
     }
 }

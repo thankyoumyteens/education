@@ -11,12 +11,12 @@ margin: 0;
 padding: 0;
 }</style>
 <link rel=stylesheet href=static/css/bootstrap.css>
-<link href=static/css/app.cb40468d204cd1737aa2d1ceb487ad12.css rel=stylesheet>
+<link href=static/css/app.02e6de5311b1819f6c0d93e0c9255854.css rel=stylesheet>
 </head>
 <body>
 <div id=app></div>
-<script type=text/javascript src=static/js/manifest.6b670e3cdb35017eebb2.js></script>
-<script type=text/javascript src=static/js/vendor.3417fd9eca4e9cf6c036.js></script>
-<script type=text/javascript src=static/js/app.d9594160a641768c6ba9.js></script>
+<script type=text/javascript src=static/js/manifest.dd354d53730a5f673dc6.js></script>
+<script type=text/javascript src=static/js/vendor.39749aa85bb59aece5c1.js></script>
+<script type=text/javascript src=static/js/app.004d0d08f1686c7b799e.js></script>
 </body>
 </html>
