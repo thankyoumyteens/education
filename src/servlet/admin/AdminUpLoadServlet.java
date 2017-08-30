@@ -94,13 +94,13 @@ public class AdminUpLoadServlet extends HttpServlet {
                         if (!".jpg".equals(extension) && !".png".equals(extension)) {
                             throw new UserException("格式不符");
                         }
-                        imgUpload =filename;
+                        imgUpload = filename;
                     }
                     if ("courseUpload".equals(name)) {
                         if (!".mp4".equals(extension)) {
                             throw new UserException("格式不符");
                         }
-                        courseUpload =filename;
+                        courseUpload = filename;
                     }
 
                     //获取item中的上传文件的输入流
