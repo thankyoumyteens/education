@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>管理员</title>
-    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/admin/css/bootstrap.css">
 </head>
 <body>
 <a href="upload.jsp">上传</a>

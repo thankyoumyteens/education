@@ -3,6 +3,7 @@ package servlet.admin;
 import exception.UserException;
 import model.Course;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import service.CourseService;
@@ -85,14 +86,20 @@ public class AdminUpLoadServlet extends HttpServlet {
                     //注意：不同的浏览器提交的文件名是不一样的，有些浏览器提交上来的文件名是带有路径的，如：  c:\a\b\1.txt，而有些只是单纯的文件名，如：1.txt
                     //处理获取到的上传文件的文件名的路径部分，只保留文件名部分
 //                    filename = filename.substring(filename.lastIndexOf("\\") + 1);
-
-                    filename = "f" + new Date().getTime() + filename.substring(filename.lastIndexOf("."));
+                    String extension = filename.substring(filename.lastIndexOf("."));
+                    filename = "f" + new Date().getTime() + extension;
 
                     String name = item.getFieldName();
                     if ("imgUpload".equals(name)) {
+                        if (!".jpg".equals(extension) || !".png".equals(extension)) {
+                            throw new UserException("格式不符");
+                        }
                         imgUpload =filename;
                     }
                     if ("courseUpload".equals(name)) {
+                        if (!".mp4".equals(extension) || !".flv".equals(extension)) {
+                            throw new UserException("格式不符");
+                        }
                         courseUpload =filename;
                     }
 
@@ -118,9 +125,10 @@ public class AdminUpLoadServlet extends HttpServlet {
                     message = "文件上传成功！";
                 }
             }
-        } catch (Exception e) {
+        } catch (FileUploadException e) {
             message = "文件上传失败！";
-            e.printStackTrace();
+        } catch (UserException e) {
+            message = e.getMessage();
         }
         if ("文件上传成功！".equals(message)) {
             // 将记录添加到数据库
@@ -137,6 +145,6 @@ public class AdminUpLoadServlet extends HttpServlet {
             }
         }
         request.setAttribute("message", message);
-        request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/upload.jsp").forward(request, response);
     }
 }

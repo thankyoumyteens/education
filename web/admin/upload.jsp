@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>上传</title>
-    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/admin/css/bootstrap.css">
     <style>
         .dialog-wrapper {
             width: 500px;
@@ -22,11 +22,15 @@
         #loginButton {
             width: 100%;
         }
+
+        .message {
+            color: #ff3333;
+        }
     </style>
 </head>
 <body>
 <div class="dialog-wrapper" id="dialogWrapper">
-    <form action="<%=request.getContextPath() %>/adminUpload" method="post" enctype="multipart/form-data">
+    <form onsubmit="check" action="<%=request.getContextPath() %>/adminUpload" method="post" enctype="multipart/form-data">
         <div class="login-dialog">
             <div class="login-item form-group">
                 <h3>上传录像</h3>
@@ -47,18 +51,23 @@
                 <select name="type" id="type">
                     <option value="100">体验课</option>
                     <option value="0">工商管理</option>
-                    <option value="1">工商管理</option>
-                    <option value="2">工商管理</option>
+                    <option value="1">金融专业</option>
+                    <option value="2">其他</option>
                 </select>
             </div>
             <div class="login-item form-group">
-                <span><%=(request.getAttribute("msg") == null ? "" : request.getAttribute("msg").toString()) %></span>
+                <span class="message"><%=(request.getAttribute("message") == null ? "" : request.getAttribute("message").toString()) %></span>
             </div>
             <div class="login-item">
                 <button type="submit" id="loginButton" class="btn btn-primary" tabindex="4">上传</button>
             </div>
         </div>
     </form>
+    <script>
+        function check() {
+            document.getElementById('loginButton').innerHTML = "上传中...";
+        }
+    </script>
 </div>
 </body>
 </html>

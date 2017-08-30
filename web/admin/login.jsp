@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>登陆</title>
-    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/admin/css/bootstrap.css">
     <style>
         .dialog-wrapper {
             width: 500px;
@@ -21,6 +21,10 @@
 
         #loginButton {
             width: 100%;
+        }
+
+        .message {
+            color: #ff3333;
         }
     </style>
 </head>
@@ -38,7 +42,7 @@
                 <input type="password" name="password" id="password" placeholder="密码" tabindex="2" class="form-control">
             </div>
             <div class="login-item form-group">
-                <span><%=(request.getAttribute("msg") == null ? "" : request.getAttribute("msg").toString()) %></span>
+                <span class="message"><%=(request.getAttribute("msg") == null ? "" : request.getAttribute("msg").toString()) %></span>
             </div>
             <div class="login-item">
                 <button type="submit" id="loginButton" class="btn btn-primary" tabindex="4">登陆</button>
