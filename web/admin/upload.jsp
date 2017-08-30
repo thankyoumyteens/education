@@ -39,11 +39,11 @@
                 <input type="text" name="title" id="title" placeholder="标题" tabindex="1" class="form-control">
             </div>
             <div class="login-item form-group">
-                <label>封面</label>
+                <label>封面(只支持jpg和png格式)</label>
                 <input type="file" name="imgUpload" accept="image/*" />
             </div>
             <div class="login-item form-group">
-                <label>录像</label>
+                <label>录像(只支持mp4格式)</label>
                 <input type="file" name="courseUpload" accept="video/*" />
             </div>
             <div class="login-item form-group">
@@ -51,8 +51,17 @@
                 <select name="type" id="type">
                     <option value="100">体验课</option>
                     <option value="0">工商管理</option>
-                    <option value="1">金融专业</option>
-                    <option value="2">其他</option>
+                    <option value="1">农业</option>
+                    <option value="2">商业</option>
+                    <option value="3">财政税收</option>
+                    <option value="4">金融</option>
+                    <option value="5">保险</option>
+                    <option value="6">运输</option>
+                    <option value="7">人力资源管理</option>
+                    <option value="8">邮电</option>
+                    <option value="9">房地产</option>
+                    <option value="10">旅游</option>
+                    <option value="11">建筑</option>
                 </select>
             </div>
             <div class="login-item form-group">

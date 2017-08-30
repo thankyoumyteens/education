@@ -91,13 +91,13 @@ public class AdminUpLoadServlet extends HttpServlet {
 
                     String name = item.getFieldName();
                     if ("imgUpload".equals(name)) {
-                        if (!".jpg".equals(extension) || !".png".equals(extension)) {
+                        if (!".jpg".equals(extension) && !".png".equals(extension)) {
                             throw new UserException("格式不符");
                         }
                         imgUpload =filename;
                     }
                     if ("courseUpload".equals(name)) {
-                        if (!".mp4".equals(extension) || !".flv".equals(extension)) {
+                        if (!".mp4".equals(extension)) {
                             throw new UserException("格式不符");
                         }
                         courseUpload =filename;
@@ -145,6 +145,6 @@ public class AdminUpLoadServlet extends HttpServlet {
             }
         }
         request.setAttribute("message", message);
-        request.getRequestDispatcher("admin/upload.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/upload.jsp").forward(request, response);
     }
 }

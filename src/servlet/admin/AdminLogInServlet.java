@@ -32,7 +32,7 @@ public class AdminLogInServlet extends HttpServlet {
         } else {
             // 登陆失败
             request.setAttribute("msg", "用户名或密码错误");
-            request.getRequestDispatcher("admin/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/admin/login.jsp").forward(request, response);
         }
     }
 }

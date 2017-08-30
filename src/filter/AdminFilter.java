@@ -19,20 +19,25 @@ public class AdminFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
         String requestURI = request.getRequestURI().substring(request.getRequestURI().lastIndexOf("/"),request.getRequestURI().length());
-        if ("/login.jsp".equals(requestURI)) {
-            chain.doFilter(request, response);
-        } else {
-            HttpSession session = request.getSession();
-            if (session == null) {
-                response.sendRedirect("login.jsp");
+        String ex = requestURI.substring(requestURI.lastIndexOf("."));
+        if (".jsp".equals(ex) || "".equals(ex)) {
+            if ("/login.jsp".equals(requestURI)) {
+                chain.doFilter(request, response);
             } else {
-                Object adminUser = session.getAttribute("admin");
-                if (adminUser == null) {
+                HttpSession session = request.getSession();
+                if (session == null) {
                     response.sendRedirect("login.jsp");
                 } else {
-                    chain.doFilter(request, response);
+                    Object adminUser = session.getAttribute("admin");
+                    if (adminUser == null) {
+                        response.sendRedirect("login.jsp");
+                    } else {
+                        chain.doFilter(request, response);
+                    }
                 }
             }
+        } else {
+            chain.doFilter(request, response);
         }
     }
 
