@@ -26,4 +26,11 @@ public class CourseDao {
         List<Course> courseList =  queryRunner.query(sql, new BeanListHandler<>(Course.class));
         return courseList;
     }
+
+    public int insert(Course course) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(C3P0Util.getDataSource());
+        String sql = "insert into t_course(category, title, img, link) values(?,?,?,?)";
+        return queryRunner.update(sql,
+                course.getCategory(), course.getTitle(), course.getImg(), course.getLink());
+    }
 }

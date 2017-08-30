@@ -48,5 +48,6 @@
     </orderEntry>
     <orderEntry type="library" name="beanutils" level="project" />
     <orderEntry type="library" name="JSONLibraries" level="project" />
+    <orderEntry type="library" name="fileupload" level="project" />
   </component>
 </module>

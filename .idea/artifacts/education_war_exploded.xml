@@ -13,6 +13,7 @@
           <element id="library" level="project" name="beanutils" />
           <element id="library" level="module" name="JUnit4" module-name="education" />
           <element id="library" level="project" name="JSONLibraries" />
+          <element id="library" level="project" name="fileupload" />
         </element>
       </element>
     </root>

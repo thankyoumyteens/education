@@ -25,4 +25,13 @@ public class CourseService {
             throw new UserException("获取数据失败");
         }
     }
+
+    public boolean insert(Course course) throws UserException {
+        try {
+            return dao.insert(course) > 0;
+        } catch (SQLException e) {
+            //
+            throw new UserException("上传失败");
+        }
+    }
 }
