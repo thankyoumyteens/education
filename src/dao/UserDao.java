@@ -14,8 +14,7 @@ public class UserDao {
     public User getUserByUidAndPwd(String uid,String pwd) throws SQLException {
         QueryRunner qr = new QueryRunner(C3P0Util.getDataSource());
         String sql = "select * from t_user where uid=? and pwd=?";
-        User user =  qr.query(sql, new BeanHandler<>(User.class), uid, pwd);
-        return user;
+        return qr.query(sql, new BeanHandler<>(User.class), uid, pwd);
     }
 
     public int insert(User user) throws SQLException {

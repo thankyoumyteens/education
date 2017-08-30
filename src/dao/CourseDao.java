@@ -15,16 +15,14 @@ public class CourseDao {
     public List<Course> getAllByCategory(int category) throws SQLException {
         QueryRunner queryRunner = new QueryRunner(C3P0Util.getDataSource());
         String sql = "select * from t_course where category=?";
-        List<Course> courseList =  queryRunner.query(sql, new BeanListHandler<>(Course.class),
+        return queryRunner.query(sql, new BeanListHandler<>(Course.class),
                 category);
-        return courseList;
     }
 
     public List<Course> getAll() throws SQLException {
         QueryRunner queryRunner = new QueryRunner(C3P0Util.getDataSource());
         String sql = "select * from t_course";
-        List<Course> courseList =  queryRunner.query(sql, new BeanListHandler<>(Course.class));
-        return courseList;
+        return queryRunner.query(sql, new BeanListHandler<>(Course.class));
     }
 
     public int insert(Course course) throws SQLException {

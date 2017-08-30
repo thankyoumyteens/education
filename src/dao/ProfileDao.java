@@ -14,8 +14,7 @@ public class ProfileDao {
     public Profile getProfileByUid(String uid) throws SQLException {
         QueryRunner qr = new QueryRunner(C3P0Util.getDataSource());
         String sql = "select * from t_profile where uid=?";
-        Profile profile =  qr.query(sql, new BeanHandler<>(Profile.class), uid);
-        return profile;
+        return qr.query(sql, new BeanHandler<>(Profile.class), uid);
     }
 
     public int update(String queryString, Object[] params) throws SQLException {
