@@ -20,11 +20,7 @@ public class UserService {
             // 记录
             throw new UserException("服务器异常");
         }
-        if (user == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return user != null && user.getDelFlag() != 1;
     }
 
     public User getUser(String uid, String pwd) throws UserException {

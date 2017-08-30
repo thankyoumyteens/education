@@ -4,7 +4,7 @@ use Education;
 -- 登陆
 create table t_user(
 	id int auto_increment primary key not null,
-	delFlag int, -- 删除标记
+	delFlag int, -- 删除标记 1表示删除
 	accessLevel int, -- 会员等级 0:普通会员 1:正式会员
 	uid text not null, -- 手机号
 	pwd text -- 密码
