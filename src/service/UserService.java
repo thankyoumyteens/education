@@ -56,4 +56,13 @@ public class UserService {
             }
         }
     }
+
+    public boolean givePermission(int level, String uid) throws UserException {
+        try {
+            return dao.updateLevel(level, uid) > 0;
+        } catch (SQLException e) {
+            //
+            throw new UserException("授权失败");
+        }
+    }
 }

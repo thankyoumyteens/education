@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/admin/css/bootstrap.css">
 </head>
 <body>
-<a href="upload.jsp">上传</a>
+<a class="btn btn-primary" href="<%=request.getContextPath() %>/admin/upload.jsp">上传</a>
+<a class="btn btn-primary" href="<%=request.getContextPath() %>/admin/permission.jsp">授权</a>
 </body>
 </html>
