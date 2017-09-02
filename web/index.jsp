@@ -17,12 +17,12 @@
         }
     </style>
     <link rel=stylesheet href=static/css/bootstrap.css>
-    <link href=static/css/app.3a569b2702c0d2f5573acae27a95cd67.css rel=stylesheet>
+    <link href=static/css/app.9ca0e001ad8678e1f71fef4f101a7e10.css rel=stylesheet>
 </head>
 <body>
 <div id=app></div>
-<script type=text/javascript src=static/js/manifest.f22504ae80ab8d3c2963.js></script>
+<script type=text/javascript src=static/js/manifest.3da63d6d9849bbdb692d.js></script>
 <script type=text/javascript src=static/js/vendor.72e1615f5f3afbfe6f5a.js></script>
-<script type=text/javascript src=static/js/app.0ee411a1e740adf25ddd.js></script>
+<script type=text/javascript src=static/js/app.218683555288936b9ec1.js></script>
 </body>
 </html>
