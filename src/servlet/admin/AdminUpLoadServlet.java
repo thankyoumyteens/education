@@ -75,8 +75,8 @@ public class AdminUpLoadServlet extends HttpServlet {
                             type = value;
                             break;
                     }
-                } else {//如果fileitem中封装的是上传文件
-
+                } else {
+                    //如果FileItem中封装的是上传文件
                     //得到上传的文件名称，
                     String filename = item.getName();
                     System.out.println(filename);
@@ -85,7 +85,7 @@ public class AdminUpLoadServlet extends HttpServlet {
                     }
                     //注意：不同的浏览器提交的文件名是不一样的，有些浏览器提交上来的文件名是带有路径的，如：  c:\a\b\1.txt，而有些只是单纯的文件名，如：1.txt
                     //处理获取到的上传文件的文件名的路径部分，只保留文件名部分
-//                    filename = filename.substring(filename.lastIndexOf("\\") + 1);
+//                    filename = filename.substring(filename.lastIndexOf("/") + 1);
                     String extension = filename.substring(filename.lastIndexOf("."));
                     filename = "f" + new Date().getTime() + extension;
 
@@ -106,7 +106,7 @@ public class AdminUpLoadServlet extends HttpServlet {
                     //获取item中的上传文件的输入流
                     InputStream in = item.getInputStream();
                     //创建一个文件输出流
-                    FileOutputStream out = new FileOutputStream(savePath + "\\" + filename);
+                    FileOutputStream out = new FileOutputStream(savePath + System.getProperty("file.separator") + filename);
                     //创建一个缓冲区
                     byte buffer[] = new byte[1024];
                     //判断输入流中的数据是否已经读完的标识
@@ -145,6 +145,6 @@ public class AdminUpLoadServlet extends HttpServlet {
             }
         }
         request.setAttribute("message", message);
-        request.getRequestDispatcher("/admin/upload.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/upload.jsp").forward(request, response);
     }
 }

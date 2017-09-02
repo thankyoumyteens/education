@@ -30,7 +30,7 @@
 </head>
 <body>
 <div class="dialog-wrapper" id="dialogWrapper">
-    <form action="<%=request.getContextPath() %>/adminLogin" method="post">
+    <form action="<%=request.getContextPath() %>/adminLogin" method="post" autocomplete="off">
         <div class="login-dialog">
             <div class="login-item form-group">
                 <h3>登陆</h3>
