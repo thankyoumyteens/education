@@ -21,10 +21,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Admin on 2017/8/30.
+ * Created by Admin on 2017/9/2.
  */
-@WebServlet(name = "AdminUpLoadServlet", urlPatterns = "/adminUpload")
-public class AdminUpLoadServlet extends HttpServlet {
+@WebServlet(name = "AdminUploadAudioServlet", urlPatterns = "/adminUploadAudio")
+public class AdminUploadAudioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -32,9 +32,7 @@ public class AdminUpLoadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //得到上传文件的保存目录，将上传的文件存放于WEB-INF目录下，不允许外界直接访问，保证上传文件的安全
         String savePath = this.getServletContext().getRealPath("/upload");
-        String type = null;
         String title = null;
-        String imgUpload = null;
         String courseUpload = null;
         File file = new File(savePath);
         //判断上传文件的保存目录是否存在
@@ -71,9 +69,6 @@ public class AdminUpLoadServlet extends HttpServlet {
                         case "title":
                             title = value;
                             break;
-                        case "type":
-                            type = value;
-                            break;
                     }
                 } else {
                     //如果FileItem中封装的是上传文件
@@ -82,25 +77,13 @@ public class AdminUpLoadServlet extends HttpServlet {
                     if (filename == null || filename.trim().equals("")) {
                         continue;
                     }
-                    //注意：不同的浏览器提交的文件名是不一样的，有些浏览器提交上来的文件名是带有路径的，如：  c:\a\b\1.txt，而有些只是单纯的文件名，如：1.txt
-                    //处理获取到的上传文件的文件名的路径部分，只保留文件名部分
-//                    filename = filename.substring(filename.lastIndexOf("/") + 1);
                     String extension = filename.substring(filename.lastIndexOf("."));
                     filename = "f" + new Date().getTime() + extension;
 
-                    String name = item.getFieldName();
-                    if ("imgUpload".equals(name)) {
-                        if (!".jpg".equals(extension) && !".png".equals(extension)) {
-                            throw new UserException("格式不符");
-                        }
-                        imgUpload = filename;
+                    if (!".mp3".equals(extension)) {
+                        throw new UserException("格式不符");
                     }
-                    if ("courseUpload".equals(name)) {
-                        if (!".mp4".equals(extension)) {
-                            throw new UserException("格式不符");
-                        }
-                        courseUpload = filename;
-                    }
+                    courseUpload = filename;
 
                     //获取item中的上传文件的输入流
                     InputStream in = item.getInputStream();
@@ -133,9 +116,9 @@ public class AdminUpLoadServlet extends HttpServlet {
             // 将记录添加到数据库
             CourseService service = new CourseService();
             Course course = new Course();
-            course.setCategory(Integer.parseInt(type));
+            course.setCategory(200);
             course.setTitle(title);
-            course.setImg(imgUpload);
+            course.setImg("");
             course.setLink(courseUpload);
             try {
                 service.insert(course);

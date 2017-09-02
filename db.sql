@@ -43,7 +43,7 @@ create table t_exams(
 -- 课程录像
 create table t_course(
   id int auto_increment primary key not null,
-  category int, -- -1:全部 100:免费课程
+  category int, -- -1:全部 100:免费课程 200:录音
   title text,
   img text,
   link text
@@ -68,4 +68,3 @@ insert into t_course(category, title, img, link) values(2, '高级人力资源',
 
 
 
-<embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=13556227&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
