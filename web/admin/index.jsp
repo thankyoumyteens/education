@@ -25,6 +25,7 @@
 <body>
 <a class="btn btn-primary" onclick="showOp('<%=request.getContextPath() %>/admin/upload.jsp')">上传录像</a>
 <a class="btn btn-primary" onclick="showOp('<%=request.getContextPath() %>/admin/uploadAudio.jsp')">上传录音</a>
+<a class="btn btn-primary" onclick="showOp('<%=request.getContextPath() %>/admin/uploadExams.jsp')">上传试题</a>
 <a class="btn btn-primary" onclick="showOp('<%=request.getContextPath() %>/admin/permission.jsp')">授权</a>
 <iframe src="" frameborder="1" id="frm" name="frm"></iframe>
 

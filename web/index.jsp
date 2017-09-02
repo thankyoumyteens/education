@@ -6,12 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html><html><head><meta charset=utf-8><title>优仕通教育</title><style>* {
-margin: 0;
-padding: 0;
-}</style>
-<link rel=stylesheet href=static/css/bootstrap.css>
-<link href=static/css/app.3a569b2702c0d2f5573acae27a95cd67.css rel=stylesheet>
+<!DOCTYPE html><html>
+<head>
+    <meta charset=utf-8>
+    <title>优仕通教育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <link rel=stylesheet href=static/css/bootstrap.css>
+    <link href=static/css/app.3a569b2702c0d2f5573acae27a95cd67.css rel=stylesheet>
 </head>
 <body>
 <div id=app></div>

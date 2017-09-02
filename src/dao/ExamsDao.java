@@ -17,4 +17,11 @@ public class ExamsDao {
         String sql = "select * from t_exams";
         return queryRunner.query(sql, new BeanListHandler<>(Exams.class));
     }
+
+    public int insert(Exams exams) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(C3P0Util.getDataSource());
+        String sql = "insert into t_exams(title, link) values(?,?)";
+        return queryRunner.update(sql,
+                exams.getTitle(), exams.getLink());
+    }
 }

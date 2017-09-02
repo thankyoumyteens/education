@@ -21,4 +21,13 @@ public class SimulationService {
             throw new UserException("服务器异常");
         }
     }
+
+    public boolean insert(Simulation simulation) throws UserException {
+        try {
+            return dao.insert(simulation) > 0;
+        } catch (SQLException e) {
+            //
+            throw new UserException("上传失败");
+        }
+    }
 }

@@ -17,4 +17,11 @@ public class SimulationDao {
         String sql = "select * from t_simulation";
         return queryRunner.query(sql, new BeanListHandler<>(Simulation.class));
     }
+
+    public int insert(Simulation simulation) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(C3P0Util.getDataSource());
+        String sql = "insert into t_simulation(title, link) values(?,?)";
+        return queryRunner.update(sql,
+                simulation.getTitle(), simulation.getLink());
+    }
 }

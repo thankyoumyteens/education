@@ -21,4 +21,13 @@ public class ExamsService {
             throw new UserException("服务器异常");
         }
     }
+
+    public boolean insert(Exams exams) throws UserException {
+        try {
+            return dao.insert(exams) > 0;
+        } catch (SQLException e) {
+            //
+            throw new UserException("上传失败");
+        }
+    }
 }
