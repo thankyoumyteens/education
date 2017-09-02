@@ -127,6 +127,6 @@ public class AdminUploadAudioServlet extends HttpServlet {
             }
         }
         request.setAttribute("message", message);
-        request.getRequestDispatcher("admin/upload.jsp").forward(request, response);
+        request.getRequestDispatcher("admin/uploadAudio.jsp").forward(request, response);
     }
 }
